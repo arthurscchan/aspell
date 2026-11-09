@@ -56,9 +56,11 @@ autoreconf -i
 ./configure --with-aspell=$ASPELL_PREFIX
 make V=1
 
-# Copy the fuzzer and corpus to the output directory.
-cp -v aspell_fuzzer $OUT/
+# Copy the fuzzers and corpora to the output directory.
+cp -v aspell_fuzzer fuzz_word_lists $OUT/
 zip $OUT/aspell_fuzzer_seed_corpus.zip aspell_fuzzer_corpus/*
+zip $OUT/fuzz_word_lists_seed_corpus.zip fuzz_word_lists_corpus/*
+cp -v fuzz_word_lists.dict fuzz_word_lists.options $OUT/
 
 # Install some dictionaries!
 export PATH=$ASPELL_PREFIX/bin:$PATH
@@ -81,3 +83,5 @@ install_language pt_BR aspell6-pt_BR-20131030-12-0
 # Verify that one corpus input runs.
 echo "Running a single corpus input"
 FUZZ_VERBOSE=yes $OUT/aspell_fuzzer aspell_fuzzer_corpus/en_us_input_utf8
+echo "Running a single fuzz_word_lists corpus input"
+FUZZ_VERBOSE=yes $OUT/fuzz_word_lists fuzz_word_lists_corpus/ws_min

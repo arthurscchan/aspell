@@ -17,13 +17,18 @@ endif
 endif
 
 noinst_PROGRAMS = \
-	aspell_fuzzer
+	aspell_fuzzer \
+	fuzz_word_lists
 noinst_LIBRARIES = \
 	libstandaloneengine.a
 
 aspell_fuzzer_SOURCES = aspell_fuzzer.cpp
 aspell_fuzzer_CXXFLAGS = $(AM_CXXFLAGS) $(FUZZ_FLAG)
 aspell_fuzzer_LDFLAGS = $(AM_LDFLAGS) -static
+
+fuzz_word_lists_SOURCES = fuzz_word_lists.cpp
+fuzz_word_lists_CXXFLAGS = $(AM_CXXFLAGS) $(FUZZ_FLAG)
+fuzz_word_lists_LDFLAGS = $(AM_LDFLAGS) -static
 
 libstandaloneengine_a_SOURCES = standaloneengine.cpp testinput.hpp
 libstandaloneengine_a_CXXFLAGS = $(AM_CXXFLAGS)
