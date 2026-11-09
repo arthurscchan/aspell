@@ -56,9 +56,14 @@ autoreconf -i
 ./configure --with-aspell=$ASPELL_PREFIX
 make V=1
 
-# Copy the fuzzer and corpus to the output directory.
+# Copy the fuzzer and corpora to the output directory.
 cp -v aspell_fuzzer $OUT/
 zip $OUT/aspell_fuzzer_seed_corpus.zip aspell_fuzzer_corpus/*
+# Structured config-focused seeds for the incumbent target (corpus pair
+# aspell-corpus-dict-options): generated deterministically at build time.
+python3 generate_seeds.py aspell_fuzzer_corpus_config
+zip $OUT/aspell_fuzzer_config_corpus.zip aspell_fuzzer_corpus_config/*
+cp -v aspell_fuzzer.dict aspell_fuzzer.options $OUT/
 
 # Install some dictionaries!
 export PATH=$ASPELL_PREFIX/bin:$PATH

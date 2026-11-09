@@ -1,0 +1,4 @@
+filter=url
+url-skip=www.bad.example
+
+see www.bad.example/page and https://ok.example zzz

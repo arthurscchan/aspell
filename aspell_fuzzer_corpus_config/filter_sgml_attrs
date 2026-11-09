@@ -1,0 +1,5 @@
+filter=sgml
+sgml-check-attr=c:class
+sgml-skip=p
+
+<p class="x">mispeled</p> ok wurld

@@ -1,0 +1,4 @@
+filter=tex
+
+\documentclass{article}
+begin ${x+1} end $wurld$ \TeXt{mispeled}

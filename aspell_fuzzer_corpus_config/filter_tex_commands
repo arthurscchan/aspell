@@ -1,0 +1,4 @@
+filter=tex
+filter-command=\\
+
+doc with \begin mispeled \end wurld

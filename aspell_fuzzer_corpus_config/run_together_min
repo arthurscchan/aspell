@@ -1,0 +1,5 @@
+run-together=true
+run-together-min=3
+run-together-limit=4
+
+aa bbverylongruntogether mid dd
